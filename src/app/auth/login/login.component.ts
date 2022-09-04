@@ -22,23 +22,24 @@ export class LoginComponent implements OnInit {
   }
 
   signin() {
-    this.loading = true;
-    console.log(this.loginForm.value);
-    this.httpClient
-      .post<IResponse<any>>('https://dineazyapi.elaachi.com/api/v1/auth/login', this.loginForm.value)
-      .subscribe(
-        response => {
-          if (response.success) {
-            sessionStorage.setItem('Login', 'success');
-            this.router.navigate(['/home']);
-          } else {
-            this.error = response.message;
-          }
-        }, error => {
-          this.error = error.message;
-        }, () => {
-          this.loading = false;
-        });
+    if (this.loginForm.valid) {
+      this.loading = true;
+      this.httpClient
+        .post<IResponse<any>>('https://dineazyapi.elaachi.com/api/v1/auth/login', this.loginForm.value)
+        .subscribe(
+          response => {
+            if (response.success) {
+              sessionStorage.setItem('Login', 'success');
+              this.router.navigate(['/home']);
+            } else {
+              this.error = response.message;
+            }
+          }, error => {
+            this.error = error.message;
+          }, () => {
+            this.loading = false;
+          });
+    }
   }
 
   gotoForgotPasswordPage(): void {
