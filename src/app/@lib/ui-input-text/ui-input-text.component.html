@@ -1,0 +1,10 @@
+<div class="group mb-3">
+    <label [for]="name" *ngIf="label" class="form-label" [ngClass]="{'text-danger':errorText}">{{label}} <em
+            class="text-danger" *ngIf="required">*</em></label>
+    <input [type]="type" class="form-control" [name]="name" [id]="name" [placeholder]="placeholder"
+        [disabled]="disabled" [ngClass]="{ 'is-invalid':errorText}" [(ngModel)]="value"
+        (ngModelChange)="handleChange($event)">
+    <i *ngIf="icon" class="{{icon}}"></i>
+    <p class="text-secondary" *ngIf="helpText">{{helpText}}</p>
+    <p class="text-danger" *ngIf="errorText">{{errorText}}</p>
+</div>

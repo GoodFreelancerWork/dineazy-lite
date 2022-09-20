@@ -16,6 +16,7 @@ import { EditProfileConfirmationComponent } from './edit-profile-confirmation/ed
 import { LogoutComponent } from './logout/logout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LibModule } from '../@lib/lib.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AuthRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    LibModule
   ]
 })
 export class AuthModule { }
